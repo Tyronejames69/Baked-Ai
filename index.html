@@ -8,16 +8,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <header>
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+      <h2>Sign In / Sign Up</h2>
+      <div id="auth-options">
+        <button onclick="loginWith('gmail')">Sign in with Gmail</button>
+        <button onclick="loginWith('email')">Sign in with Email</button>
+        <button onclick="loginWith('apple')">Sign in with Apple</button>
+      </div>
+      <div id="email-login" style="display:none;">
+        <input type="email" id="email-input" placeholder="Enter your email" required>
+        <input type="password" id="password-input" placeholder="Enter your password" required>
+        <button onclick="handleLogin()">Login</button>
+        <button onclick="handleSignup()">Sign Up</button>
+        <a href="#" onclick="showForgetPassword()">Forget Password?</a>
+      </div>
+      <p id="auth-message"></p>
+    </div>
+  </div>
+
+  <header id="main-header" style="display:none;">
     <h1><i class="fas fa-leaf"></i> Baked AI</h1>
     <button id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
   </header>
-  <nav>
+  <nav id="main-nav" style="display:none;">
     <button class="tab active" data-tab="chat">Chat</button>
     <button class="tab" data-tab="code">Code</button>
     <button class="tab" data-tab="image">Images</button>
   </nav>
-  <main>
+  <main id="main-content" style="display:none;">
     <section id="chat" class="tab-content active">
       <h2><i class="fas fa-comment"></i> AI Chat</h2>
       <textarea id="chat-input" placeholder="Ask Baked AI anything..." rows="3"></textarea>
@@ -47,10 +67,10 @@
         <button onclick="downloadImagePrompt()">Download Prompt</button>
       </div>
       <p>Responses: <span id="image-count">0</span></p>
-      <div id="image-output"><img src="https://images.unsplash.com/photo-1535893574236-2e2e249a5122?auto=format&fit=crop&w=300" alt="Lion" loading="lazy"></div>
+      <div id="image-output"><p>No images available (mock gallery).</p></div>
     </section>
   </main>
-  <footer>
+  <footer id="main-footer" style="display:none;">
     <p>© 2025 Baked AI | Powered by <i class="fas fa-leaf"></i></p>
   </footer>
   <script src="script.js"></script>
